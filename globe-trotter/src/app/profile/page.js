@@ -12,6 +12,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
 import { Button } from "@/components/ui/button";
+import Navbar from "@/components/ui/navbar";
 
 export default function ProfilePage() {
     const { user } = useAuth();
@@ -126,36 +127,7 @@ export default function ProfilePage() {
     return (
         <div className="min-h-screen bg-[#F4F6EF]">
             {/* Navigation Bar */}
-            <nav className="bg-[#13294B] text-white px-6 py-4 sticky top-0 z-50 shadow-lg">
-                <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    <Link href="/" className="font-serif text-3xl font-bold tracking-tight hover:text-[#327D81] transition-colors">
-                        GlobeTrotter
-                    </Link>
-
-                    <div className="flex items-center gap-6">
-                        <Link href="/dashboard" className="hover:text-[#327D81] transition-colors font-medium">
-                            Dashboard
-                        </Link>
-                        <Link href="/plan-trip" className="hover:text-[#327D81] transition-colors font-medium">
-                            Plan Trip
-                        </Link>
-                        <Link href="/community" className="hover:text-[#327D81] transition-colors font-medium">
-                            Community
-                        </Link>
-                        <Link href="/profile">
-                            <div className="w-10 h-10 bg-[#327D81] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#266063] transition-colors overflow-hidden">
-                                {user?.photoURL ? (
-                                    <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
-                                ) : (
-                                    <span className="text-sm font-bold">
-                                        {user?.email?.[0]?.toUpperCase() || "U"}
-                                    </span>
-                                )}
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-            </nav>
+            <Navbar />
 
             {/* Profile Header Section */}
             <section className="bg-white border-b-4 border-[#327D81] shadow-md">
