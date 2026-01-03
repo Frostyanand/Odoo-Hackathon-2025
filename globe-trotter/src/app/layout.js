@@ -1,4 +1,5 @@
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 // 1. Setup the "Editorial" Serif Font for Headings
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       {/* 3. Inject both variables into the body */}
       <body className={`${playfair.variable} ${dmSans.variable} font-sans antialiased bg-[#F4F6EF]`}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

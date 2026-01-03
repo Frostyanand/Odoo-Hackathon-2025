@@ -92,12 +92,19 @@ export default function GlobeTrotterLanding() {
             Your journey begins where planning ends. Connect, explore, and create memories that last forever.
           </p>
 
-          <Link href="/dashboard">
-            <Button className="bg-[#327D81] hover:bg-[#266063] text-white text-lg group">
-              Start Your Journey
-              <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/login?mode=signup">
+              <Button className="bg-[#327D81] hover:bg-[#266063] text-white text-lg group">
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </Button>
+            </Link>
+            <Link href="/login?mode=signin">
+              <Button className="bg-transparent border-2 border-white/50 hover:border-white hover:bg-white/10 text-white text-lg">
+                Sign In
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* REMOVED: Scroll Indicator (Mouse Logo) */}
@@ -295,11 +302,18 @@ export default function GlobeTrotterLanding() {
         <p className="text-xl leading-relaxed text-[#13294B]/70 mb-12 max-w-2xl mx-auto">
           Join thousands of travelers who've turned their dreams into stamps on a passport.
         </p>
-        <Link href="/dashboard">
-          <Button className="bg-[#327D81] hover:bg-[#266063] text-white text-lg">
-            Create Free Account
-          </Button>
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/login?mode=signup">
+            <Button className="bg-[#327D81] hover:bg-[#266063] text-white text-lg">
+              Create Free Account
+            </Button>
+          </Link>
+          <Link href="/login?mode=signin">
+            <Button className="bg-transparent border-2 border-[#327D81] hover:bg-[#327D81] hover:text-white text-[#327D81] text-lg transition-colors">
+              Already a Member? Sign In
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* Footer */}
