@@ -194,13 +194,8 @@ export default function LoginPage() {
 
                 const result = await signInWithEmailAndPassword(auth, email, password);
 
-                // Check email verification
-                if (!result.user.emailVerified) {
-                    setNeedsVerification(true);
-                    await signOut(auth);
-                    setLoading(false);
-                    return;
-                }
+                // Bypass email verification check for hackathon/demo
+                // if (!result.user.emailVerified) { ... }
 
                 await handlePostLogin(result.user, "email");
             } else {
@@ -220,18 +215,15 @@ export default function LoginPage() {
 
                 const result = await createUserWithEmailAndPassword(auth, email, password);
 
-                // Sync user to database with profile info
-                await syncUserToDatabase(result.user, "email", {
+                // Send verification email but allow immediate access
+                await sendEmailVerification(result.user);
+
+                await handlePostLogin(result.user, "email", {
                     name: name.trim(),
                     phone: phone.trim() || null,
                     city: city.trim() || null,
                     country: country.trim() || null,
                 });
-
-                await sendEmailVerification(result.user);
-                setNeedsVerification(true);
-                await signOut(auth);
-                setLoading(false);
             }
         } catch (err) {
             console.error(err);
