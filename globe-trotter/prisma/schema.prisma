@@ -1,0 +1,51 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// User Profile
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  trips     Trip[]
+}
+
+// Trip Details
+model Trip {
+  id          String   @id @default(cuid())
+  name        String
+  startDate   DateTime
+  endDate     DateTime
+  budget      Float
+  destination String
+  coverImage  String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  stops       Stop[]
+}
+
+// Stops (Cities) within a Trip
+model Stop {
+  id        String   @id @default(cuid())
+  city      String
+  arrival   DateTime
+  tripId    String
+  trip      Trip     @relation(fields: [tripId], references: [id])
+  activities Activity[]
+}
+
+// Specific Activities (Costs, Type)
+model Activity {
+  id     String @id @default(cuid())
+  name   String
+  cost   Float
+  type   String // e.g. "Food", "Adventure"
+  stopId String
+  stop   Stop   @relation(fields: [stopId], references: [id])
+}

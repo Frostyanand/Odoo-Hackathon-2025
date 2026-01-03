@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    /* White */
+    --foreground: 216 60% 18%;
+    /* Navy Text #13294B */
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 60% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 60% 18%;
+
+    /* YOUR PALETTE: Teal #327D81 */
+    --primary: 176 43% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    /* YOUR PALETTE: Navy #13294B */
+    --secondary: 216 60% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* YOUR PALETTE: Cream #F4F6EF */
+    --muted: 74 18% 95%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 74 18% 95%;
+    /* Cream for hover states */
+    --accent-foreground: 216 60% 18%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 176 43% 35%;
+    /* Ring matches Primary Teal */
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
